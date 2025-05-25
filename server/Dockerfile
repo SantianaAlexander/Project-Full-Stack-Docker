@@ -1,6 +1,7 @@
-FROM python:3
+FROM nikolaik/python-nodejs
 #Definisce la working directory del container
 WORKDIR /app 
+RUN npm install -g nodemon
 
 #Copia requirements.txt e installa le dipendenze
 COPY requirements.txt ./
@@ -13,4 +14,4 @@ COPY . .
 EXPOSE 5000
 
 #Avvia il server python
-CMD [ "python", "./app.py" ]
+CMD [ "nodemon", "./app.py" ]
